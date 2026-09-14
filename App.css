@@ -1,0 +1,1547 @@
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background: #050d18;
+  color: #ffffff;
+
+  overflow-x: hidden;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+button {
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      180deg,
+      #07111f 0%,
+      #050d18 100%
+    );
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  min-height: 78px;
+
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(8, 20, 35, 0.97);
+
+  border-bottom: 1px solid #24364d;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 50;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+}
+
+.brand {
+  position: relative;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+
+  color: #ffffff;
+}
+
+.brand::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 28px;
+  height: 2px;
+
+  background: #4ba3e8;
+}
+
+.headerTitle h1 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+.headerTitle p {
+  margin: 6px 0 0;
+
+  color: #71869e;
+
+  font-size: 10px;
+
+  letter-spacing: 0.3px;
+}
+
+.systemStatus {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 9px 13px;
+
+  border: 1px solid #285a46;
+
+  background: rgba(20, 66, 47, 0.18);
+
+  color: #45d789;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #35d27d;
+
+  box-shadow:
+    0 0 9px rgba(53, 210, 125, 0.7);
+}
+
+
+/* =========================================================
+   MAIN DASHBOARD
+========================================================= */
+
+.dashboard {
+  width: 100%;
+
+  max-width: 1900px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(430px, 0.85fr);
+
+  gap: 18px;
+
+  padding: 18px 20px 25px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   LEFT AIRCRAFT PANEL
+========================================================= */
+
+.aircraftPanel {
+  min-width: 0;
+
+  background: #091727;
+
+  border: 1px solid #24384f;
+
+  border-radius: 3px;
+
+  overflow: hidden;
+
+  position: sticky;
+
+  top: 96px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.22);
+}
+
+.panelHeader {
+  min-height: 76px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #22364d;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(16, 38, 62, 0.45),
+      rgba(8, 23, 39, 0.2)
+    );
+}
+
+.panelHeader h2 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+}
+
+.panelHeader p {
+  margin: 6px 0 0;
+
+  color: #71869e;
+
+  font-size: 9px;
+}
+
+.aircraftBadge {
+  padding: 7px 13px;
+
+  border: 1px solid #347fbd;
+
+  background: rgba(28, 105, 164, 0.12);
+
+  color: #71bfff;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   3D VIEWER
+========================================================= */
+
+.viewer {
+  height: 590px;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #18314e 0%,
+      #0d1e32 42%,
+      #07111f 78%,
+      #050c16 100%
+    );
+
+  overflow: hidden;
+}
+
+/* technical grid effect */
+
+.viewer::before {
+  content: "3D ENGINEERING VIEW";
+
+  position: absolute;
+
+  top: 16px;
+  left: 18px;
+
+  z-index: 10;
+
+  padding: 7px 10px;
+
+  background: rgba(5, 14, 25, 0.82);
+
+  border: 1px solid #2b4865;
+
+  color: #82a6c8;
+
+  font-size: 8px;
+
+  letter-spacing: 1.6px;
+
+  pointer-events: none;
+}
+
+.viewer::after {
+  content: "DRAG TO ROTATE   •   SCROLL TO ZOOM   •   CLICK TO INSPECT";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 16px;
+
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  padding: 7px 12px;
+
+  background: rgba(5, 14, 25, 0.82);
+
+  border: 1px solid #2b4865;
+
+  color: #7894ae;
+
+  font-size: 8px;
+
+  letter-spacing: 0.8px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   VIEWER INFORMATION
+========================================================= */
+
+.viewerHoverInfo {
+  position: absolute;
+
+  top: 55px;
+  right: 18px;
+
+  width: 190px;
+
+  padding: 12px;
+
+  background: rgba(5, 15, 27, 0.94);
+
+  border: 1px solid #2c79b5;
+
+  border-left: 3px solid #3996dc;
+
+  z-index: 20;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.viewerHoverInfo span,
+.viewerSelection span,
+.selectedEngineeringHeader span {
+  display: block;
+
+  color: #6283a0;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+.viewerHoverInfo strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #d7e8f8;
+
+  font-size: 11px;
+}
+
+.viewerHoverInfo small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #70869c;
+
+  font-size: 8px;
+}
+
+.viewerSelection {
+  position: absolute;
+
+  left: 18px;
+  bottom: 52px;
+
+  min-width: 210px;
+
+  padding: 11px 13px;
+
+  background: rgba(5, 15, 27, 0.91);
+
+  border: 1px solid #27445f;
+
+  border-left: 3px solid #2586ca;
+
+  z-index: 15;
+
+  pointer-events: none;
+}
+
+.viewerSelection strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #e0ebf5;
+
+  font-size: 11px;
+}
+
+.viewerSelection small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #599bd0;
+
+  font-size: 8px;
+
+  letter-spacing: 0.7px;
+}
+
+
+/* =========================================================
+   VIEWER FOOTER
+========================================================= */
+
+.viewerFooter {
+  min-height: 42px;
+
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #081524;
+
+  border-top: 1px solid #24384e;
+
+  color: #71879d;
+
+  font-size: 8px;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   COMPONENT SELECTOR
+========================================================= */
+
+.componentSelector {
+  padding: 17px 18px;
+
+  background: #091727;
+
+  border-top: 1px solid #24384e;
+  border-bottom: 1px solid #24384e;
+}
+
+.componentSelectorHeader {
+  margin-bottom: 12px;
+}
+
+.componentSelectorHeader span {
+  display: block;
+
+  color: #5e7892;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.1px;
+}
+
+.componentSelectorHeader strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #b4c5d5;
+
+  font-size: 9px;
+
+  font-weight: 500;
+}
+
+.componentButtons {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 7px;
+}
+
+.componentButton {
+  min-height: 34px;
+
+  padding: 7px 9px;
+
+  background: #071321;
+
+  border: 1px solid #263d54;
+
+  color: #8298ad;
+
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.componentButton:hover {
+  border-color: #347db4;
+
+  color: #b7d7ee;
+
+  background: #0a1d31;
+}
+
+.componentButton.active {
+  background: #103654;
+
+  border-color: #3289c9;
+
+  color: #70bdff;
+
+  box-shadow:
+    inset 3px 0 0 #3289c9;
+}
+
+
+/* =========================================================
+   SELECTED ENGINEERING AREA
+========================================================= */
+
+.selectedEngineering {
+  padding: 17px 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0a192a,
+      #081422
+    );
+
+  border-bottom: 1px solid #24384e;
+}
+
+.selectedEngineeringHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.selectedEngineeringHeader h3 {
+  margin: 6px 0 0;
+
+  font-size: 13px;
+
+  color: #dce8f2;
+}
+
+.componentCode {
+  padding: 5px 8px;
+
+  background: #0b263d;
+
+  border: 1px solid #285878;
+
+  color: #67b5ee !important;
+
+  white-space: nowrap;
+}
+
+.engineeringStatus {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 14px;
+
+  padding: 8px 10px;
+
+  background: #071321;
+
+  border: 1px solid #1e344a;
+}
+
+.engineeringStatus span {
+  color: #60758c;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+}
+
+.engineeringStatus strong {
+  color: #42d482;
+
+  font-size: 8px;
+
+  letter-spacing: 0.5px;
+}
+
+.selectedEngineering > p {
+  margin: 13px 0 0;
+
+  color: #8195a9;
+
+  font-size: 9px;
+
+  line-height: 1.65;
+}
+
+.engineeringNote {
+  margin-top: 13px;
+
+  padding: 11px 12px;
+
+  background: #071321;
+
+  border-left: 2px solid #2a83c6;
+}
+
+.engineeringNote strong {
+  color: #70b8e9;
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+}
+
+.engineeringNote p {
+  margin: 5px 0 0;
+
+  color: #8095aa;
+
+  font-size: 8px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   AIRCRAFT INFORMATION
+========================================================= */
+
+.aircraftInfo {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  background: #081524;
+}
+
+.infoBlock {
+  min-width: 0;
+
+  padding: 14px;
+
+  border-right: 1px solid #22364b;
+}
+
+.infoBlock:last-child {
+  border-right: none;
+}
+
+.infoLabel {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #5e748b;
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+}
+
+.infoBlock strong {
+  display: block;
+
+  color: #d3dfea;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.green {
+  color: #42d482 !important;
+}
+
+
+/* =========================================================
+   RIGHT ENGINEERING AREA
+========================================================= */
+
+.engineeringPanel {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+  background:
+    linear-gradient(
+      145deg,
+      #0a1929,
+      #081523
+    );
+
+  border: 1px solid #24384f;
+
+  border-radius: 2px;
+
+  padding: 17px;
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.cardTitle {
+  min-height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #203449;
+}
+
+.cardTitle h2 {
+  margin: 0;
+
+  color: #aebfd0;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+}
+
+.activeTag {
+  padding: 4px 8px;
+
+  background: #103653;
+
+  border: 1px solid #225d87;
+
+  color: #69baff;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+}
+
+.readyTag {
+  color: #42d482;
+
+  font-size: 7px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SELECTED SUMMARY
+========================================================= */
+
+.selectedSummary {
+  border-left: 2px solid #318dd0;
+}
+
+.selectedSummaryGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 13px;
+}
+
+.selectedSummaryGrid > div {
+  padding: 10px;
+
+  background: #071321;
+
+  border: 1px solid #1d3045;
+}
+
+.selectedSummaryGrid label {
+  margin-bottom: 5px;
+}
+
+.selectedSummaryGrid strong {
+  display: block;
+
+  color: #d5e2ed;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   TASK
+========================================================= */
+
+.taskGrid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+.dataItem {
+  padding: 9px;
+
+  background: #071321;
+
+  border: 1px solid #1c3045;
+}
+
+.dataItem label {
+  margin-bottom: 5px;
+}
+
+.dataItem strong {
+  font-size: 9px;
+
+  color: #d5e0ea;
+}
+
+label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #70869d;
+
+  font-size: 8px;
+
+  letter-spacing: 0.2px;
+}
+
+select,
+input {
+  width: 100%;
+
+  margin-bottom: 12px;
+
+  padding: 9px 10px;
+
+  background: #06111e;
+
+  border: 1px solid #30465e;
+
+  border-radius: 2px;
+
+  color: #dce7f1;
+
+  outline: none;
+
+  font-size: 9px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+select:hover,
+input:hover {
+  border-color: #3a6080;
+}
+
+select:focus,
+input:focus {
+  border-color: #398fd0;
+
+  box-shadow:
+    0 0 0 2px rgba(57, 143, 208, 0.08);
+}
+
+option {
+  background: #0b1a2b;
+
+  color: #ffffff;
+}
+
+.technicalDescription {
+  margin-top: 3px;
+
+  padding: 12px;
+
+  background: #071321;
+
+  border-left: 2px solid #2a87ca;
+}
+
+.technicalDescription strong {
+  color: #71b9eb;
+
+  font-size: 8px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+}
+
+.technicalDescription p {
+  margin: 6px 0 0;
+
+  color: #879bad;
+
+  font-size: 8px;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   ENGINEERING DECISION
+========================================================= */
+
+.engineeringDecision {
+  margin-top: 3px;
+
+  padding: 11px 12px;
+
+  background: #101b25;
+
+  border: 1px solid #4e4730;
+
+  border-left: 2px solid #d2a73d;
+}
+
+.engineeringDecision span {
+  display: block;
+
+  color: #777d7d;
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 5px;
+}
+
+.engineeringDecision strong {
+  color: #e2bd57;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   ANALYSIS
+========================================================= */
+
+.analysisGrid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 8px;
+}
+
+.analysisItem {
+  display: flex;
+
+  gap: 9px;
+
+  padding: 10px;
+
+  background: #071321;
+
+  border: 1px solid #1d3045;
+}
+
+.analysisItem > span {
+  color: #3e96d7;
+
+  font-size: 8px;
+
+  font-weight: 700;
+}
+
+.analysisItem strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #c7d5e2;
+
+  font-size: 8px;
+}
+
+.analysisItem p {
+  margin: 0;
+
+  color: #788da3;
+
+  font-size: 7.5px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   REQUIREMENTS
+========================================================= */
+
+.requirementRow {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid #182a3c;
+
+  color: #94a7b9;
+
+  font-size: 8px;
+}
+
+.requirementRow:last-child {
+  border-bottom: none;
+}
+
+.requirementRow strong {
+  font-size: 7px;
+
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   COST CALCULATION
+========================================================= */
+
+.inputGrid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 10px;
+}
+
+.calculationBox {
+  margin-top: 2px;
+
+  border: 1px solid #26394e;
+}
+
+.calculationRow {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 9px 11px;
+
+  border-bottom: 1px solid #1a2a3c;
+
+  font-size: 9px;
+}
+
+.calculationRow span {
+  color: #8194aa;
+}
+
+.calculationRow strong {
+  color: #cbd8e3;
+}
+
+.totalRow {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0b2035,
+      #0c2943
+    );
+
+  font-size: 8px;
+}
+
+.totalRow span {
+  color: #aab9c8;
+
+  letter-spacing: 0.5px;
+}
+
+.totalRow strong {
+  color: #68baff;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   INSPECTION RECORD
+========================================================= */
+
+.recordGrid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 8px;
+
+  margin-bottom: 12px;
+}
+
+.recordGrid > div {
+  min-width: 0;
+
+  padding: 10px;
+
+  background: #071321;
+
+  border: 1px solid #1d3045;
+}
+
+.recordGrid label {
+  margin-bottom: 5px;
+}
+
+.recordGrid strong {
+  display: block;
+
+  color: #c6d4df;
+
+  font-size: 8px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primaryButton {
+  width: 100%;
+
+  padding: 11px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #2487d1,
+      #1769aa
+    );
+
+  border: 1px solid #3698df;
+
+  color: #ffffff;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  cursor: pointer;
+
+  border-radius: 2px;
+}
+
+.primaryButton:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #2c96e3,
+      #1c75ba
+    );
+
+  transform: translateY(-1px);
+}
+
+.secondaryButton {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 9px;
+
+  background: transparent;
+
+  border: 1px solid #3b5269;
+
+  color: #9cafc1;
+
+  cursor: pointer;
+
+  font-size: 8px;
+
+  border-radius: 2px;
+}
+
+.secondaryButton:hover {
+  border-color: #4c789c;
+
+  color: #c4d9e9;
+
+  background: rgba(44, 93, 130, 0.08);
+}
+
+
+/* =========================================================
+   WORK ORDER
+========================================================= */
+
+.workOrder {
+  border: 1px solid #294056;
+
+  background: #071321;
+
+  padding: 12px;
+}
+
+.workOrderHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding-bottom: 9px;
+
+  margin-bottom: 8px;
+
+  border-bottom: 1px solid #25394e;
+}
+
+.workOrderHeader strong {
+  color: #dbe6ef;
+
+  font-size: 10px;
+}
+
+.workOrderHeader span {
+  color: #42d482;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  text-align: right;
+}
+
+.workOrderRow {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 6px 0;
+
+  color: #8195aa;
+
+  font-size: 8px;
+}
+
+.workOrderRow strong {
+  max-width: 58%;
+
+  color: #d4e0e9;
+
+  text-align: right;
+
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+.notes p {
+  margin: 0 0 11px;
+
+  color: #8296aa;
+
+  font-size: 8px;
+
+  line-height: 1.7;
+}
+
+.notes p:last-child {
+  margin-bottom: 0;
+}
+
+.notes strong {
+  color: #b9c9d8;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  min-height: 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+
+  padding: 0 25px;
+
+  background: #081523;
+
+  border-top: 1px solid #24374c;
+
+  color: #60758b;
+
+  font-size: 7px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.7px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1250px) {
+  .dashboard {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(380px, 0.8fr);
+  }
+
+  .viewer {
+    height: 540px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .aircraftPanel {
+    position: relative;
+
+    top: 0;
+  }
+
+  .engineeringPanel {
+    width: 100%;
+  }
+
+  .viewer {
+    height: 560px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 16px 18px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .headerLeft {
+    width: 100%;
+
+    gap: 17px;
+  }
+
+  .brand {
+    font-size: 21px;
+  }
+
+  .headerTitle h1 {
+    font-size: 14px;
+  }
+
+  .headerTitle p {
+    font-size: 8px;
+  }
+
+  .systemStatus {
+    align-self: flex-start;
+  }
+
+  .dashboard {
+    padding: 10px;
+
+    gap: 10px;
+  }
+
+  .panelHeader {
+    padding: 0 14px;
+  }
+
+  .panelHeader h2 {
+    font-size: 12px;
+  }
+
+  .panelHeader p {
+    font-size: 8px;
+  }
+
+  .viewer {
+    height: 420px;
+  }
+
+  .viewerFooter {
+    display: none;
+  }
+
+  .viewerSelection {
+    bottom: 15px;
+    left: 12px;
+  }
+
+  .viewerHoverInfo {
+    top: 50px;
+    right: 12px;
+  }
+
+  .componentButtons {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .aircraftInfo {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .infoBlock:nth-child(2) {
+    border-right: none;
+  }
+
+  .infoBlock:nth-child(-n + 2) {
+    border-bottom: 1px solid #22364b;
+  }
+
+  .taskGrid,
+  .analysisGrid,
+  .recordGrid,
+  .inputGrid,
+  .selectedSummaryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .footer {
+    padding: 15px;
+
+    gap: 15px;
+  }
+}
